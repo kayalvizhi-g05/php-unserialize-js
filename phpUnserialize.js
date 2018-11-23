@@ -32,7 +32,7 @@
    * @param {String} phpstr Php serialized string to parse
    * @return {mixed} Parsed result
    */
-  return function (phpstr) {
+  return function (phpstr, datatype) {
     var idx = 0
       , refStack = []
       , ridx = 0
@@ -223,6 +223,8 @@
             val = parseNext();
             obj[key] = val;
           }
+          if(datatype)
+          obj['datatype'] = 'object';
           idx++;
           return obj;
         } //end parseAsObject
